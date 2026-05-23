@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- CACHEBUSTING. https://petrapixel.neocities.org/coding/cachebusting -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Path to your CSS file (like usual), or empty ("") if you don't have one:
+    const CSS_FILE_PATH = "style.css"; 
+    
+    // Path to your JS file (like usual), or empty ("") if you don't have one:
+    const JS_FILE_PATH = "script.js"; 
+    
+    function loadScript(src) {
+      const script = document.createElement("script");
+      script.src = src + "?nocache=" + new Date().getTime();
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    function loadCSS(href) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href + "?nocache=" + new Date().getTime();
+      document.head.appendChild(link);
+    }
+    if (JS_FILE_PATH) loadScript(JS_FILE_PATH);
+    if (CSS_FILE_PATH) loadCSS(CSS_FILE_PATH);
+});
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The web site of halfpeeledoranges</title>
@@ -11,7 +37,7 @@
       border-radius: 50%
     }
 div{
-  background-color: solid white;
+  background-color: solid lightgrey;
   width: 400px;
   border: 15px solid lightyellow;
   padding: 50px;
